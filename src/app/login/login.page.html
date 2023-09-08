@@ -1,9 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-button [routerLink]="['/home']">Ingresar</ion-button>
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center">
+  <div class="content">
+    <h1>¡Bienvenido!</h1>
+    <form>
+      <h2>TeLlevoAPP</h2>
+      <mat-form-field>
+        <input matInput placeholder="Nombre de usuario">
+      </mat-form-field>      
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Contraseña">
+      </mat-form-field>
+      <div>
+        <ion-button [routerLink]="['/home']" expand="block" color="primary">Ingresar</ion-button>
+        <ion-button [routerLink]="['/recovery']" color="danger">¿Olvidaste tu contraseña?</ion-button>
+      </div>
+    </form>
+
+  </div>
 </ion-content>
