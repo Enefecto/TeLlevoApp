@@ -7,7 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-label>
-    Bienvenido {{ nombreUsuario }}
-  </ion-label>
+  <div class="content" >
+    <ion-label>
+      Bienvenido <span>{{ nombreUsuario }}</span>
+    </ion-label>
+  </div>
+  <button class="back" [routerLink]="['/login']">Cerrar Sesión</button>
 </ion-content>
