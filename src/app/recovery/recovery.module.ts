@@ -8,12 +8,16 @@ import { RecoveryPageRoutingModule } from './recovery-routing.module';
 
 import { RecoveryPage } from './recovery.page';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecoveryPageRoutingModule
+    RecoveryPageRoutingModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   declarations: [RecoveryPage]
 })
