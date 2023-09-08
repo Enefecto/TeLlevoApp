@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  nombreUsuario: string = ''; 
+  contrasenia: string = '';  
 
-  constructor() { }
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {
+  onUsernameChange(event: any) {
+    this.nombreUsuario = event.target.value; 
+    this.userService.setNombreUsuario(this.nombreUsuario); 
   }
 
+  onPasswordChange(event: any) {
+    this.contrasenia = event.target.value; 
+    this.userService.setContrasenia(this.contrasenia); 
+  }
+
+  ngOnInit() {
+    
+
+  }
 }

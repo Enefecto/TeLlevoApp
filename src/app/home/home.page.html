@@ -1,11 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button [routerLink]="['/login']" >login</ion-button>
+  <ion-label>
+    Bienvenido {{ nombreUsuario }}
+  </ion-label>
 </ion-content>
