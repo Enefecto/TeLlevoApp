@@ -10,14 +10,17 @@
     <form>
       <h2>TeLlevoAPP</h2>
       <mat-form-field>
-        <input matInput placeholder="Nombre de usuario" (input)="onUsernameChange($event)">
-      </mat-form-field>      
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput [(ngModel)]="user" name="username"> 
+      </mat-form-field>
+         
 
       <mat-form-field>
-        <input matInput type="password" placeholder="Contraseña" (input)="onPasswordChange($event)">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password">
       </mat-form-field>
       <div>
-        <ion-button [routerLink]="['/home']" expand="block" color="primary">Ingresar</ion-button>
+        <ion-button expand="block" color="primary" (click)="login()">Ingresar</ion-button>
         <ion-button [routerLink]="['/recovery']" color="danger">¿Olvidaste tu contraseña?</ion-button>
       </div>
     </form>

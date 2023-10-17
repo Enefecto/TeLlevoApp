@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +7,9 @@ import { UserService } from '../user.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  data: any;
 
-  nombreUsuario: string;
-
-  constructor(private userService: UserService) {
-    this.nombreUsuario = this.userService.getNombreUsuario();
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    
   }
-
 }

@@ -1,29 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { Component } from '@angular/core';
+import { Router,NavigationExtras } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-  nombreUsuario: string = ''; 
-  contrasenia: string = '';  
+export class LoginPage {
+  
+  user = '';
+  
+  constructor(private router: Router) {}
+  
+  login() {
+    let userData: NavigationExtras = {
+      state: {user: this.user}
+    };
 
-  constructor(private userService: UserService) {}
-
-  onUsernameChange(event: any) {
-    this.nombreUsuario = event.target.value; 
-    this.userService.setNombreUsuario(this.nombreUsuario); 
-  }
-
-  onPasswordChange(event: any) {
-    this.contrasenia = event.target.value; 
-    this.userService.setContrasenia(this.contrasenia); 
-  }
-
-  ngOnInit() {
-    
-
+    this.router.navigate(['/home'], userData);
+    console.log(userData);
   }
 }
