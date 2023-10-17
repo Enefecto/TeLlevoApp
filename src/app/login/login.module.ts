@@ -9,6 +9,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     IonicModule,
     LoginPageRoutingModule,
     MatInputModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
   ],
   declarations: [LoginPage]
 })

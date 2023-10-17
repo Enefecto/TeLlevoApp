@@ -10,15 +10,18 @@ import { Router,NavigationExtras } from '@angular/router';
 export class LoginPage {
   
   user = '';
-  
+  loading = false;
   constructor(private router: Router) {}
   
   login() {
+    this.loading = true;
     let userData: NavigationExtras = {
       state: {user: this.user}
     };
-
-    this.router.navigate(['/home'], userData);
-    console.log(userData);
+  
+    setTimeout(() => {
+      this.router.navigate(['/home'], userData);
+      this.loading = false;
+    }, 2000);
   }
 }
