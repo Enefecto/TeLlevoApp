@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <h1>TeLlevoAPP</h1>
+    <form (ngSubmit)="registrarse()">
+      <h2>Formulario de registro</h2>
+      <mat-form-field>
+        <mat-label>Nombre de Usuario</mat-label>
+        <input [(ngModel)]="username" matInput name="username" type="text" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input [(ngModel)]="password" matInput name="password" type="password" required>
+      </mat-form-field>
+      
+      <div class="responsive-inputs">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input [(ngModel)]="nombre" matInput name="nombre" type="text" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input [(ngModel)]="apellido" matInput name="apellido" type="text" required>
+        </mat-form-field>
+      </div>
+
+      <div class="responsive-inputs">
+        <mat-form-field>
+          <mat-label>Teléfono</mat-label>
+          <input [(ngModel)]="telefono" matInput name="telefono" type="tel" required>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Tipo de Usuario</mat-label>
+          <mat-select [(ngModel)]="tipoDeUsuario" name="tipoDeUsuario" required>
+            <mat-option value="Pasajero">Pasajero</mat-option>
+            <mat-option value="Piloto">Piloto</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <ion-button color="success" type="submit">Registrarse</ion-button>
+    </form>
+  </div>
+</ion-content>

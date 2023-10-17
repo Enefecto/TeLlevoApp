@@ -4,21 +4,23 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RecoveryPageRoutingModule } from './recovery-routing.module';
+import { RegisterPageRoutingModule } from './register-routing.module';
 
-import { RecoveryPage } from './recovery.page';
+import { RegisterPage } from './register.page';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecoveryPageRoutingModule,
+    RegisterPageRoutingModule,
     MatInputModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
+    MatSelectModule,
   ],
-  declarations: [RecoveryPage]
+  declarations: [RegisterPage]
 })
-export class RecoveryPageModule {}
+export class RegisterPageModule {}
