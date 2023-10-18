@@ -44,7 +44,8 @@
           </mat-select>
         </mat-form-field>
       </div>
-
+      <span id="fail" *ngIf="fail">Ya existe un usuario con el mismo username.</span>
+      <span id="success" *ngIf="success">Usuario creado correctamente</span>
       <ion-button color="success" type="submit">Registrarse</ion-button>
     </form>
   </div>
