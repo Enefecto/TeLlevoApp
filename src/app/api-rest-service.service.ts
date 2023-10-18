@@ -6,7 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiRestServiceService {
 
-  constructor(private http: HttpClient) { } 
+  constructor(
+    private http: HttpClient,
+  ) { } 
 
   getUsuarios() {
     const url = 'http://127.0.0.1:8000/api/usuarios/';
@@ -17,4 +19,5 @@ export class ApiRestServiceService {
     const url = 'http://127.0.0.1:8000/api/usuarios/';
     return this.http.post(url, usuario);
   }
+
 }

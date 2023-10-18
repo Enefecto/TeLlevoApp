@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router,NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiRestServiceService } from '../api-rest-service.service';
 
 @Component({
@@ -8,11 +8,18 @@ import { ApiRestServiceService } from '../api-rest-service.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  //Todos los usuarios
-  USUARIOS: object = {};
-  
-  user = '';
+  // Todos los usuarios
+  USUARIOS: any[] = []; // Cambiado a un arreglo de usuarios
+
+  username = '';
+  password = '';
+
   loading = false;
+
+  //Booleanos para mensajes informativos
+  success = false;
+  fail = false;
+
   constructor(
     private router: Router,
     private apiService: ApiRestServiceService
@@ -20,20 +27,36 @@ export class LoginPage {
 
   login() {
     this.loading = true;
-    let userData: NavigationExtras = {
-      state: {user: this.user}
-    };
-  
-    setTimeout(() => {
-      this.router.navigate(['/home'], userData);
+
+    // Verificar si el usuario y contraseña coinciden con algún registro
+    const usuario = this.USUARIOS.find(
+      (u) => u.username === this.username && u.password === this.password
+    );
+
+    if (usuario) {
+      // Usuario y contraseña válidos
+      this.success = true;
+      this.fail = false;
+
+      setTimeout(() => {
+        // Pasar al home
+        this.router.navigate(['/home']);
+        this.loading = false;
+      }, 2000);
+    } else {
+      // Usuario o contraseña incorrecto
       this.loading = false;
-    }, 2000);
+      this.fail = true;
+      this.success = false;
+    }
   }
 
   ngOnInit() {
-    this.apiService.getUsuarios().subscribe(data => {
+    this.fail = false;
+    this.success = false;
+    this.apiService.getUsuarios().subscribe((data: any) => { // Cambiado de any[] a any
       this.USUARIOS = data;
-      console.log(this.USUARIOS);
     });
   }
+  
 }

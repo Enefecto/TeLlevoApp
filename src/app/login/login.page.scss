@@ -58,3 +58,11 @@ a{
         flex-direction: column;
     }
 }
+#fail, #success{
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+#success{color: rgb(120, 255, 120);}
+#fail{color: rgb(255, 120, 120);}
