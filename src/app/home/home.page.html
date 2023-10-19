@@ -12,5 +12,5 @@
       Bienvenido <span>{{ data }}</span>
     </ion-label>
   </div>
-  <button class="back" [routerLink]="['/login']">Cerrar Sesión</button>
+  <button class="back" (click)="volver()" [routerLink]="['/login']">Cerrar Sesión</button>
 </ion-content>

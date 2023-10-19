@@ -37,7 +37,7 @@ export class LoginPage {
       // Usuario y contraseña válidos
       this.success = true;
       this.fail = false;
-
+      localStorage.setItem('ingresado','true');
       setTimeout(() => {
         // Pasar al home
         this.router.navigate(['/home']);

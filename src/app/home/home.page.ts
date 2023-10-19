@@ -9,7 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomePage {
   data: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-    
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
+  }
+
+  volver(){
+    localStorage.setItem('ingresado','false');
   }
 }
