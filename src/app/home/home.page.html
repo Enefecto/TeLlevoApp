@@ -9,8 +9,8 @@
 <ion-content [fullscreen]="true">
   <div class="content">
     <ion-label>
-      Bienvenido <span>{{ data }}</span>
+      Bienvenido <span>{{ data.username }}</span>
     </ion-label>
   </div>
-  <button class="back" (click)="volver()" [routerLink]="['/login']">Cerrar Sesión</button>
+  <button class="back" (click)="volver()">Cerrar Sesión</button>
 </ion-content>

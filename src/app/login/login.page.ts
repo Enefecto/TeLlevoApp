@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiRestServiceService } from '../api-rest-service.service';
 
@@ -7,7 +7,7 @@ import { ApiRestServiceService } from '../api-rest-service.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   // Todos los usuarios
   USUARIOS: any[] = []; // Cambiado a un arreglo de usuarios
 
@@ -32,15 +32,18 @@ export class LoginPage {
     const usuario = this.USUARIOS.find(
       (u) => u.username === this.username && u.password === this.password
     );
-
+    
     if (usuario) {
       // Usuario y contraseña válidos
       this.success = true;
       this.fail = false;
       localStorage.setItem('ingresado','true');
+
+      const usuarioJSON = JSON.stringify(usuario);
+      localStorage.setItem('user',usuarioJSON);
       setTimeout(() => {
         // Pasar al home
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home'],{ state: { usuario: usuarioJSON } });
         this.loading = false;
       }, 2000);
     } else {
@@ -54,6 +57,8 @@ export class LoginPage {
   ngOnInit() {
     this.fail = false;
     this.success = false;
+    this.username = '';
+    this.password = '';
     this.apiService.getUsuarios().subscribe((data: any) => { // Cambiado de any[] a any
       this.USUARIOS = data;
     });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiRestServiceService } from '../api-rest-service.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -24,7 +24,8 @@ export class RegisterPage implements OnInit {
 
 
   constructor(
-    private apiService: ApiRestServiceService
+    private apiService: ApiRestServiceService,
+    private router: Router
   ) { }
 
   registrarse() {
@@ -81,4 +82,7 @@ export class RegisterPage implements OnInit {
     });
   }
 
+  volver(){
+    this.router.navigate(['/login']);
+  }
 }
