@@ -1,20 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Recuperar Contraseña
+      Cambiar contraseña
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="content" >
-    <h1>Recuperar Contraseña</h1>
+    <h1>Cambiar Contraseña</h1>
     <form>
       <mat-form-field>
-        <mat-label>Nombre de usuario</mat-label>
-        <input matInput required>
+        <mat-label >Nombre de usuario</mat-label>
+        <input [(ngModel)]="username" name="username" matInput required>
       </mat-form-field>
-      <ion-button [routerLink]="['/login']" expand="block" color="success">Recuperar</ion-button>
+      <mat-form-field *ngIf="found">
+        <mat-label>Contraseña</mat-label>
+        <input [(ngModel)]="password" name="password" matInput type="password" required>
+      </mat-form-field>
+      <span id="fail" *ngIf="fail">Usuario no encontrado</span>
+      <span id="success" *ngIf="success">Contraseña reestablecida</span>
+      <ion-button *ngIf="notFound" (click)="buscar()" expand="block" color="success">Buscar usuario</ion-button>
+      <ion-button *ngIf="found" (click)="recuperar()" expand="block" color="success">Cambiar</ion-button>
     </form>
   </div>
   <button class="back" [routerLink]="['/login']">Atrás</button>

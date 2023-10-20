@@ -20,4 +20,8 @@ export class ApiRestServiceService {
     return this.http.post(url, usuario);
   }
 
+  modificarUsuario(usuario :any, id: any){
+    const url = `http://127.0.0.1:8000/api/usuarios/${id}/`;
+    return this.http.put(url,usuario);
+  }
 }
