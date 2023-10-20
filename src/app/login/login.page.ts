@@ -13,9 +13,9 @@ export class LoginPage implements OnInit {
 
   username = '';
   password = '';
+  recordarme = false;
 
   loading = false;
-
   //Booleanos para mensajes informativos
   success = false;
   fail = false;
@@ -23,8 +23,8 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiRestServiceService
-  ) {}
-
+    ) {}
+    
   login() {
     this.loading = true;
 
@@ -38,6 +38,14 @@ export class LoginPage implements OnInit {
       this.success = true;
       this.fail = false;
       localStorage.setItem('ingresado','true');
+
+      if (this.recordarme) {
+        // Si el checkbox está marcado, guardar en el localStorage
+        localStorage.setItem('recordarme', 'true');
+      } else {
+        // Si el checkbox no está marcado, remover del localStorage
+        localStorage.removeItem('recordarme');
+      }
 
       const usuarioJSON = JSON.stringify(usuario);
       localStorage.setItem('user',usuarioJSON);
@@ -55,13 +63,27 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    const recordarme = localStorage.getItem('recordarme');
+    this.recordarme = recordarme === 'true';
+  }
+
+  ionViewWillEnter() {
     this.fail = false;
     this.success = false;
     this.username = '';
     this.password = '';
+
+    if (localStorage.getItem('recordarme') == 'true') {
+      let userJSON = localStorage.getItem('user');
+      if (userJSON) {
+        let user = JSON.parse(userJSON);
+        this.username = user.username;
+        this.password = user.password;
+      }
+    }
+
     this.apiService.getUsuarios().subscribe((data: any) => { // Cambiado de any[] a any
       this.USUARIOS = data;
     });
   }
-  
 }

@@ -16,12 +16,16 @@
         <mat-label>Nombre de usuario</mat-label>
         <input matInput id="username" [(ngModel)]="username" name="username" required> 
       </mat-form-field>
-         
 
       <mat-form-field>
         <mat-label>Contraseña</mat-label>
-        <input matInput id="password" [(ngModel)]="password" name="password" type="password" required >
+        <input matInput id="password" [(ngModel)]="password" name="password" type="password" >
       </mat-form-field>
+
+      <div class="end">
+        <ion-checkbox slot="start" [(ngModel)]="recordarme" name="recordarme">Recordarme</ion-checkbox>
+      </div>
+
       <div>
         <span id="fail" *ngIf="fail">Usuario o contraseña incorrecto</span>
         <span id="success" *ngIf="success">Usuario y contraseña válidos</span>

@@ -57,14 +57,12 @@ export class RegisterPage implements OnInit {
     if (usuarioExistente) {
       this.fail = true;
       this.success = false;
-      console.log('entre');
     } else {
       this.success = true;
       this.fail = false;
 
       //Solicitud POST para crear al Usuario.
       this.apiService.crearUsuario(nuevoUsuario).subscribe(data => {
-        console.log('Usuario creado correctamente:', data);
       });
 
       //Solicitud GET para actualizar usuarios en USUARIOS.

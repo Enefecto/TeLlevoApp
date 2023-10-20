@@ -18,9 +18,11 @@ export class HomePage {
     }
   }
 
-  volver(){
+  cerrarSesion(){
     localStorage.setItem('ingresado','false');
-    localStorage.setItem('user','');
+    if(localStorage.getItem('recordarme') !== 'true'){
+      localStorage.setItem('user','');
+    }
     this.router.navigate(['/login']);
   }
 }
