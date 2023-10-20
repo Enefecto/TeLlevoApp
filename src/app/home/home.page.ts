@@ -15,6 +15,8 @@ export class HomePage {
     const state = navigation?.extras.state as { usuario: string };
     if (state && state.usuario) {
       this.data = JSON.parse(state.usuario);
+    } else {
+      this.data = {username: ''}
     }
   }
 
