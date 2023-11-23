@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nuevo Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <form (ngSubmit)="registrarViaje()">
+      <h2>Nuevo Viaje</h2>
+
+      <mat-form-field>
+        <mat-label>Día</mat-label>
+        <input [(ngModel)]="dia" matInput name="dia" type="date" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hora</mat-label>
+        <input [(ngModel)]="hora" matInput name="hora" type="time" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cantidad de Pasajeros</mat-label>
+        <input [(ngModel)]="pasajeros" matInput name="pasajeros" type="number" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Comuna Destino</mat-label>
+        <input [(ngModel)]="comunaDestino" matInput name="comunaDestino" type="text" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Precio</mat-label>
+        <input [(ngModel)]="precio" matInput name="precio" type="number" required>
+      </mat-form-field>
+
+      <span *ngIf="sinPasajeros" id="fail">Debe haber minimo 1 pasajero para generar el viaje</span>
+      <span *ngIf="sinPrecio" id="fail">El viaje debe costar minimo $1000</span>
+
+      <span *ngIf="success" id="success">Viaje agregado correctamente</span>
+      <span *ngIf="fail" id="fail">Algo salio mal</span>
+
+      <ion-button  expand="block" type="submit">Registrar Viaje</ion-button>
+    </form>
+    <button class="back" [routerLink]="['/piloto']">Volver</button>
+  </div>
+</ion-content>

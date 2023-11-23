@@ -30,6 +30,26 @@ const routes: Routes = [
     canActivate: [NoIngresadoGuard]
   },
   {
+    path: 'pasajero',
+    loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
+    path: 'piloto',
+    loadChildren: () => import('./piloto/piloto.module').then( m => m.PilotoPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
+    path: 'register-viaje',
+    loadChildren: () => import('./register-viaje/register-viaje.module').then( m => m.RegisterViajePageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
+    path: 'viajes',
+    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
     path: 'e404',
     loadChildren: () => import('./e404/e404.module').then( m => m.E404PageModule)
   },
@@ -38,6 +58,8 @@ const routes: Routes = [
     redirectTo: 'e404',
     pathMatch: 'full'
   },
+
+
 
 ];
 

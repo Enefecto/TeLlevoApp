@@ -24,4 +24,19 @@ export class ApiRestServiceService {
     const url = `http://127.0.0.1:8000/api/usuarios/${id}/`;
     return this.http.put(url,usuario);
   }
+
+  getViajes(){
+    const url = 'http://127.0.0.1:8000/api/viajes/';
+    return this.http.get(url);
+  }
+
+  crearViaje(viaje: any){
+    const url = 'http://127.0.0.1:8000/api/viajes/';
+    return this.http.post(url,viaje);
+  }
+
+  actualizarViaje(viaje: any, id: number) {
+    const url = `http://127.0.0.1:8000/api/viajes/${id}/`;
+    return this.http.put(url, viaje);
+  }
 }

@@ -9,15 +9,14 @@ import { Router } from '@angular/router';
 
 export class HomePage {
   data: any;
+  USER: any;
+  username: String = '';
+
+  pasajero = false;
+  piloto = false;
 
   constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as { usuario: string };
-    if (state && state.usuario) {
-      this.data = JSON.parse(state.usuario);
-    } else {
-      this.data = {username: ''}
-    }
+
   }
 
   cerrarSesion(){
@@ -26,5 +25,19 @@ export class HomePage {
       localStorage.setItem('user','');
     }
     this.router.navigate(['/login']);
+  }
+  ionViewWillEnter(){
+
+    this.username = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!).username : null;
+
+    this.pasajero = false;
+    this.piloto = false;
+    let JSONdata = localStorage.getItem('user');
+    this.USER = JSON.parse(JSONdata || '');
+    if (this.USER.tipoDeUsuario === 'Pasajero'){
+      this.pasajero = true;
+    } else if (this.USER.tipoDeUsuario === 'Piloto'){
+      this.piloto = true;
+    }
   }
 }

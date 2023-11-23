@@ -9,8 +9,10 @@
 <ion-content [fullscreen]="true">
   <div class="content">
     <ion-label>
-      Bienvenido <span>{{ data.username }}</span>
+      Bienvenido <span>{{ username }}</span>
     </ion-label>
+    <ion-button *ngIf="piloto" [routerLink]="['/piloto']">Viajes</ion-button>
+    <ion-button *ngIf="pasajero" [routerLink]="['/pasajero']">Buscar Viaje</ion-button>
   </div>
   <button class="back" (click)="cerrarSesion()">Cerrar Sesión</button>
 </ion-content>
