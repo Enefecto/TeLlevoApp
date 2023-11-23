@@ -39,4 +39,9 @@ export class ApiRestServiceService {
     const url = `http://127.0.0.1:8000/api/viajes/${id}/`;
     return this.http.put(url, viaje);
   }
+
+  eliminarViaje(id: number) {
+    const url = `http://127.0.0.1:8000/api/viajes/${id}/`;
+    return this.http.delete(url);
+  }
 }

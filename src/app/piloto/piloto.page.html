@@ -6,7 +6,21 @@
 
 <ion-content [fullscreen]="true">
   <div class="content">
-    <ion-button [routerLink]="['/register-viaje']">Iniciar Viaje</ion-button>
+    <ion-list lines="full">
+      <ion-item *ngFor="let viaje of VIAJES">
+        <ion-label>
+          <h2>{{ viaje.comunaDestino }}</h2>
+          <p>Precio: <span>{{ viaje.Precio }}</span></p>
+          <p>Capacidad de pasajeros: <span>{{ viaje.pasajeros }}</span></p>
+          <p>Día: <span>{{ viaje.dia }}</span></p>
+          <p>Hora: <span>{{ viaje.hora }}</span></p>
+        </ion-label>
+        <div>
+          <ion-button (click)="Cancelar(viaje)">Cancelar</ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
     <button class="back" [routerLink]="['/home']">Volver</button>
   </div>
+  <ion-button expand="full" [routerLink]="['/register-viaje']">Iniciar Viaje</ion-button>
 </ion-content>
